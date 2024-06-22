@@ -150,8 +150,9 @@
     <div id="server-banner"></div>
     <div class="grid h-screen place-items-center" data-root>
         <div class="flex w-full max-w-2xl flex-col items-center px-6 text-center md:px-10 mt-32">
+
             <div class="h-9 text-xl mb-32">
-                <img id="serverIcon" hidden style="border-radius: 0%;height: 110px;width: 110px;margin-bottom:10px;"
+                <img style="display: none;" id="" hidden style="border-radius: 51%;height: 110px;width: 110px;margin-bottom:10px;"
                     src="https://i.imgur.com/9OYl9f9.png">
             </div>
             <div data-loader>
@@ -203,10 +204,11 @@
             You can set vc-captcha-require for a custom message to show if your server has the captcha setting enabled
             You can set vc-verify-success for a custom message after the member has verified
             -->
+
             <h2 data-server-content id="serverInstructions"
                 vc-invalid-domain="Server koi ? "
                 vc-captcha-require="This server requires a captcha. Click the captcha below to verify."
-                vc-verify-success="custom" class="text-sm font-semibold"></h2>
+                vc-verify-success="custom" class="text-sm font-semibold">Success</h2>
 
             <!-- myWidget is for the captcha if you have that option enabled. It's recommended to not delete this element if you don't have to -->
             <div id="myWidget"></div>
