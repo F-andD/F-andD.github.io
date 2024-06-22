@@ -33,28 +33,48 @@
     }
     .info, .label {
         margin-bottom: 10px;
+        user-select: none;
     }
     .label {
         color: green;
-        font-weight: 700;
+        font-weight: 700; 
     }
     h1 {
         text-align: center;
+        user-select: none;
     }
-    .scrolling-box {
-        width: 200px;
+    .scrolling-text-container {
+        width: 10ch;
         overflow: hidden;
         white-space: nowrap;
+        border: 1px solid #000;
+        border-radius: 5px;
+        background-color: black;
     }
+
     .scrolling-text {
         display: inline-block;
-        animation: scroll 5s linear infinite;
+        padding-left: 100%;
+        animation: scroll-text 5s linear infinite;
+        color: #fff;
     }
-    @keyframes scroll {
-        from {
-            transform: translateX(100%);
+    #country {
+        color: white;
+    }
+    #isp {
+        color: white;
+    }
+    #ip {
+        color: white;
+    }
+    #time {
+        color: white;
+    }
+    @keyframes scroll-text {
+        0% {
+            transform: translateX(0);
         }
-        to {
+        100% {
             transform: translateX(-100%);
         }
     }
@@ -257,15 +277,23 @@
     <div class="box">
         <div class="row">
             <div class="label">IP Address:</div>
-            <div class="info scrolling-box" id="ip"></div>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text" id="ip"></div>
+            </div>
             <div class="label">Country:</div>
-            <div class="info scrolling-box" id="country"></div>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text" id="country"></div>
+            </div>
         </div>
         <div class="row">
             <div class="label">ISP:</div>
-            <div class="info scrolling-box" id="isp"></div>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text" id="isp"></div>
+            </div>
             <div class="label">Local Time:</div>
-            <div class="info scrolling-box" id="time"></div>
+            <div class="scrolling-text-container">
+                <div class="scrolling-text" id="time"></div>
+            </div>
         </div>
     </div>
 
@@ -330,8 +358,10 @@
         function setInfoText(elementId, text) {
             const element = document.getElementById(elementId);
             if (text.length > 10) {
-                element.innerHTML = `<span class="scrolling-text">${text}</span>`;
+                element.classList.add('scrolling-text');
+                element.textContent = text;
             } else {
+                element.classList.remove('scrolling-text');
                 element.textContent = text;
             }
         }
